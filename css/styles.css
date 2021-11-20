@@ -491,6 +491,11 @@ address {
   color: var(--accent-hover-color);
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.button-modal-close:hover,
+.button-modal-close:focus {
+  background-color: var(--accent-hover-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 /* Стили кнопок */
 
@@ -721,16 +726,17 @@ address {
   height: 100%;
   background-color: var(--backdrop-color);
   visibility: visible;
-  transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: visibility;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
   visibility: hidden;
-  opacity: 0;
   pointer-events: none;
 }
 
-.modal.is-hidden {
+.modal {
   min-height: 581px;
   min-width: 528px;
   position: absolute;
@@ -743,7 +749,14 @@ address {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  transition: opacity transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: opacity, transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal.is-hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
 }
 
 .button-modal-close {
