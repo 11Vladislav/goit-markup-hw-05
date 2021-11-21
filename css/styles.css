@@ -20,6 +20,8 @@
   --portfolio-overlay-color: rgba(33, 150, 243, 0.9);
   --backdrop-color: rgba(0, 0, 0, 0.2);
   --border-button: rgba(0, 0, 0, 0.1);
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration: 250ms;
 }
 
 *,
@@ -459,7 +461,7 @@ address {
 .accent-color {
   color: var(--accent-hover-color);
   fill: var(--accent-hover-color);
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--duration) var(--timing-function);
 }
 
 .button:hover,
@@ -468,7 +470,7 @@ address {
   background-color: var(--accent-hover-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--duration) var(--timing-function);
 }
 
 .networks-link:hover,
@@ -476,25 +478,25 @@ address {
   background-color: var(--accent-hover-color);
   border-radius: 50%;
   fill: var(--secondary-color);
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill var(--duration) var(--timing-function);
 }
 
 .costumer-link:hover,
 .costumer-link:focus {
   fill: var(--accent-hover-color);
   border: 1px solid var(--accent-hover-color);
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill var(--duration) var(--timing-function);
 }
 
 .footer-link:focus,
 .footer-link:hover {
   color: var(--accent-hover-color);
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--duration) var(--timing-function);
 }
 .button-modal-close:hover,
 .button-modal-close:focus {
   background-color: var(--accent-hover-color);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--duration) var(--timing-function);
 }
 
 /* Стили кнопок */
@@ -616,7 +618,7 @@ address {
 .footer-net-link:focus,
 .footer-net-link:hover {
   background-color: var(--accent-hover-color);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--duration) var(--timing-function);
 }
 
 /* Стили портфолио */
@@ -659,14 +661,14 @@ address {
   cursor: pointer;
   opacity: 1;
   transform: translateY(-294px);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--duration) var(--timing-function);
 }
 
 .project-item:hover,
 .project-item:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow var(--duration) var(--timing-function);
 }
 
 .portfolio-img {
@@ -679,7 +681,7 @@ address {
   display: block;
   position: absolute;
   transform: translateY(294px);
-  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--duration) var(--timing-function);
   bottom: -294px;
   height: 294px;
   width: 100%;
@@ -725,15 +727,16 @@ address {
   width: 100%;
   height: 100%;
   background-color: var(--backdrop-color);
-  visibility: visible;
-  transition-property: visibility;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity var(--duration) var(--timing-function);
 }
 
 .backdrop.is-hidden {
-  visibility: hidden;
+  opacity: 0;
   pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.5);
 }
 
 .modal {
@@ -749,14 +752,7 @@ address {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  transition-property: opacity, transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.modal.is-hidden {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.5);
+  transition: transform var(--duration) var(--timing-function);
 }
 
 .button-modal-close {
